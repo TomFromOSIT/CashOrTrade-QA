@@ -1,12 +1,31 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from time import sleep
 
 driver = webdriver.Firefox()
+
+driver.implicitly_wait(15)
 
 #Create a test which logs in to https://front-stage.cashortrade.org
 
 driver.get("https://front-stage.cashortrade.org")
 
+#Xpath specs https://www.w3.org/TR/xpath-30/
+# section 3.2 , dynamic processing
+driver.find_element(By.XPATH, '/descendant::*[text() = "Log In"]').click()
 
+sleep(1)
+
+#with phone number (888) 888-8888
+phone_box = driver.find_element(By.XPATH, '/descendant::input[attribute::type ="tel"]')
+phone_box.click()
+phone_box.send_keys("8888888888")
+driver.find_element(By.XPATH, '/descendant::*[text() = "Next"]').click()
+
+#2auth code will be: 000000
+auth_box = driver.find_element(By.XPATH, '/descendant::input[attribute::autocomplete ="one-time-code"]')
+auth_box.send_keys("000000")
+driver.find_element(By.XPATH, '/descendant::*[text() = "Next"]').click()
 
 '''
 Create a test which logs in to https://front-stage.cashortrade.org with phone number (888) 888-8888
