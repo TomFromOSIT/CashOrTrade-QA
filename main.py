@@ -27,6 +27,15 @@ auth_box = driver.find_element(By.XPATH, '/descendant::input[attribute::autocomp
 auth_box.send_keys("000000")
 driver.find_element(By.XPATH, '/descendant::*[text() = "Next"]').click()
 
+driver.find_element(By.XPATH, '/descendant::*[text() = "Sell Tickets"]').click()
+driver.find_element(By.XPATH, '/descendant::*[text() = "Skip Walkthrough"]').click()
+driver.find_element(By.XPATH, '/descendant::button[attribute::id = "performer-result-2"]').click()
+driver.find_element(By.XPATH, '/descendant::button[attribute::id = "search-event-result-0"]').click()
+
+driver.find_element(By.XPATH, '/descendant::button[attribute::id = "sellortrade-sell"]').click()
+driver.find_element(By.XPATH, '/descendant::*[text() = "Digital Transfer"]/ancestor::button').click()
+sleep(5)
+driver.find_element(By.XPATH, '/descendant::*[text() = "Next"]/ancestor::button').click()
 '''
 Create a test which logs in to https://front-stage.cashortrade.org with phone number (888) 888-8888
 2auth code will be: 000000
